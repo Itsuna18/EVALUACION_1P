@@ -214,11 +214,38 @@ El issue define el qué y por qué (problema/tarea). El PR entrega el cómo (có
 
 **📝 Respuesta:**
 
-<!-- Escribe aquí tu respuesta completa a la Pregunta 5 -->
+**Procedimiento realizado:**
+Creación de ramas:
+git checkout develop
+git checkout -b ramaA
+echo "Contenido A" > archivoA.txt
+git add archivoA.txt
+git commit -m "feat: archivoA.txt con Contenido A"
+git push -u origin ramaA
 
----
+git checkout develop
+git checkout -b ramaB
+echo "Contenido B" > archivoA.txt
+git add archivoA.txt
+git commit -m "feat: archivoA.txt con Contenido B"
+git push -u origin ramaB
+**Generación y resolución del conflicto**
+git checkout ramaA
+git merge ramaB   # conflicto en archivoA.txt
+Resolví el conflicto combinando ambos contenidos y confirmé:
+![alt text](IMG/image5.png)
+![alt text](IMG/image6.png)
+**Merge hacia develop y push**
+git checkout develop
+git merge ramaA
+git push origin develop
+**Eliminación de ramas (local y remoto) tras el merge**
+git branch -d ramaA ramaB
+git push origin --delete ramaA
+git push origin --delete ramaB
 
 ## Pregunta 6 (2 puntos)
+
 
 **Realizar limpieza, explicar versionamiento semántico y enviar cambios al repositorio original**
 
